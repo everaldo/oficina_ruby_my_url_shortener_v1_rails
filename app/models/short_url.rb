@@ -12,6 +12,6 @@ class ShortUrl < ApplicationRecord
 
   def create_hash
     return true unless new_record?
-    self.code = url.create_hash
+    self.code = url.create_hash unless url.empty?
   end
 end
