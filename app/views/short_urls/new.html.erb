@@ -2,22 +2,22 @@
 
 
 <% if @short_url.persisted? %>
-	<%=  show_short_url(@short_url) %>
+  <%=  show_short_url(@short_url) %>
 <% end %>
 
 
 <%= form_for @short_url, url: short_url_path, method: :post do |f| %>
-	<% if @short_url.errors.any? %>
-		<div id="error_explanation">
-			<h2><%= pluralize(@short_url.errors.count, "erro")%>
-					<%= "impediu".pluralize(@short_url.errors.count) %> essa URL de ser encurtada</h2>
-				<ul>
-					<% @short_url.errors.full_messages.each do |msg| %>
-						<li><%= msg %></li>
-					<% end %>
-				</ul>
-		</div>
-	<% end %>
+  <% if @short_url.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@short_url.errors.count, "erro")%>
+      <%= "impediu".pluralize(@short_url.errors.count) %> essa URL de ser encurtada</h2>
+      <ul>
+        <% @short_url.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <%= f.text_field :url %>
   <%= submit_tag 'Encurtar' %>
 <% end %>
